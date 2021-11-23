@@ -6,16 +6,19 @@
       v-bind:selectedNoteId="selectedNoteId"
       v-on:selectNote="selectNote"
     />
+    <multiselect v-model="value" :options="options"></multiselect>
   </div>
 </template>
 
 <script>
 import Toolbar from './components/Toolbar.vue'
 import NoteContainer from './components/NoteContainer.vue'
+import Multiselect from 'vue-multiselect'
 export default {
   components: {
     Toolbar,
-    NoteContainer
+    NoteContainer,
+    Multiselect
   },
   data: function () {
     return {
@@ -24,7 +27,9 @@ export default {
         { id: 2, body: "This is the second test", timestamp: Date.now() },
         { id: 3, body: "This is the third test", timestamp: Date.now() }
       ],
-      selectedNoteId: 1
+      selectedNoteId: 1,
+      value: null,
+      options: ['list', 'of', 'options']
     }
   },
   methods: {
@@ -35,6 +40,8 @@ export default {
   name: 'app'
 };
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style>
 /* RESET */
