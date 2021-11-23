@@ -6,7 +6,20 @@
       v-bind:selectedNoteId="selectedNoteId"
       v-on:selectNote="selectNote"
     />
+    <br>
+    <hr>
+    <br>
+    <h1>Single Select</h1>
     <multiselect v-model="value" :options="options"></multiselect>
+    <br>
+    <hr>
+    <br>
+    <h1>Auto Complete</h1>
+    <autocomplete
+      source="https://api.github.com/search/repositories?q="
+      results-property="items"
+      results-display="full_name">
+    </autocomplete>
   </div>
 </template>
 
@@ -14,11 +27,14 @@
 import Toolbar from './components/Toolbar.vue'
 import NoteContainer from './components/NoteContainer.vue'
 import Multiselect from 'vue-multiselect'
+import Vue from 'vue'
+import Autocomplete from 'vuejs-auto-complete'
 export default {
   components: {
     Toolbar,
     NoteContainer,
-    Multiselect
+    Multiselect,
+    Autocomplete
   },
   data: function () {
     return {
@@ -43,6 +59,7 @@ export default {
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
+<!-- 
 <style>
 /* RESET */
 * {
@@ -146,3 +163,4 @@ body {
   font-size: 0.9em;
 }
 </style>
+-->
