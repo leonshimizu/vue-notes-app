@@ -4,6 +4,8 @@
       v-for="note in notes"
       v-bind:key="note.id"
       v-bind:note="note"
+      v-bind:selectedNoteId="selectedNoteId"
+      v-on:selectNote="selectNote"
     />
 
   </div>
@@ -21,7 +23,13 @@ import NoteSelector from './NoteSelector.vue'
           { id: 1, body: "This is the first test", timestamp: Date.now() },
           { id: 2, body: "This is the second test", timestamp: Date.now() },
           { id: 3, body: "This is the third test", timestamp: Date.now() }
-        ]
+        ],
+        selectedNoteId: 1
+      }
+    },
+    methods: {
+      selectNote: function(note) {
+        this.selectedNoteId = note.id
       }
     }
   }
